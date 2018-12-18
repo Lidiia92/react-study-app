@@ -1,0 +1,19 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+}
+
+body {
+  font-size: 1.6rem;
+  background-image: url("./pictures/joanna-kosinska-129039-unsplash.jpg");
+  font-family: 'Amatic SC', cursive;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
