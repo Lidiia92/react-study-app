@@ -1,5 +1,4 @@
 .jumbotron-background {
-  margin-top: -45px;
   height: 100vh;
   background-image: url("./pictures/joanna-kosinska-129039-unsplash.jpg");
   background-repeat: no-repeat;
@@ -15,11 +14,13 @@
 
 .navbar {
   border-radius: 0%;
+  margin-bottom: 0;
 }
 
 .navbar-inverse .navbar-nav>li>a {
   color: #b0b0b0;
   font-size: 2.2rem;
+  
 }
 
 .dropdown-menu>li>a {
