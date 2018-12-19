@@ -30,7 +30,7 @@ const SubHeading = styled.h4`
 
 const ButtonPrimary = styled(Button)`
     font-size: 2.5rem;
-    marging-top: 20px;
+    margin-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
     font-weight: bold;

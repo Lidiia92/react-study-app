@@ -7,6 +7,11 @@ import NavBar from './components/NavBar';
 import Quizzes from './components/Quizzes';
 import { getQuizzes } from './actions';
 import './App.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHeart, faThumbsUp, faThumbsDown, faCat } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat);
+
 
 // for testing in console
 window.axios = axios;
