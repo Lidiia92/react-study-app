@@ -1,6 +1,7 @@
 import React from "react";
 import { Jumbotron, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import '../App.css';
 
 const Header = styled.div`
     display: flex;
@@ -38,17 +39,19 @@ const ButtonPrimary = styled(Button)`
 
 const JumbotronComponent = props => {
   return (
-    <Header>
-            <JumbotronStyled>
-                <Heading>You are one smart Cookie!</Heading>
-                <SubHeading>
-                    Test your knowledge! Take our quiz.
-                </SubHeading>
-                <p>
-                    <ButtonPrimary bsStyle="primary">Start</ButtonPrimary>
-                </p>
-        </JumbotronStyled>
-    </Header>
+    <div className="jumbotron-background">
+        <Header>
+                <JumbotronStyled>
+                    <Heading>You are one smart Cookie!</Heading>
+                    <SubHeading>
+                        Test your knowledge! Take our quiz.
+                    </SubHeading>
+                    <p>
+                        <ButtonPrimary bsStyle="primary">Start</ButtonPrimary>
+                    </p>
+            </JumbotronStyled>
+        </Header>
+    </div>
   );
 };
 

@@ -19,7 +19,6 @@ const Brand = styled.a.attrs({
   `;
 
 
-
 /* Component */
 
 const NavigationBar = props => {
@@ -27,15 +26,13 @@ const NavigationBar = props => {
         <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Brand href="#brand">SmartCookie</Brand>
+            <Brand href="/">SmartCookie</Brand>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav >
-            <NavItem eventKey={1} href="#">
-              Link
-            </NavItem>
+            <NavItem eventKey={1} href="/api/quizzes">Quizzes</NavItem>  
             <NavItem eventKey={2} href="#">
               Link
             </NavItem>
