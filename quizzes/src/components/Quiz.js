@@ -2,12 +2,24 @@ import React from "react";
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
+
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemTitle,
+    AccordionItemBody,
+} from 'react-accessible-accordion';
+
+import 'react-accessible-accordion/dist/fancy-example.css';
+import './css/Quizzes.css';
+
 const Quiz = styled.div`
     max-width: 600px;
     border-radius: 2px;
     transition: all .2s ease-in-out;
     margin-top: 25px;
-    padding-bottom: 8px;
+    padding-bottom: 2px;
     
     &:hover {
         transform: scale(1.1);
@@ -117,10 +129,18 @@ class QuizComponent extends React.Component {
   render(){
     return (
         <Quiz>
-            <Title>{this.props.quizz.title}</Title>
-            <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
-            <Votes><ThumbsDown onClick={() => this.handleLikeDown(this.props.quizz.votes)} icon="thumbs-down"/>{this.state.votes}<AwesomeIcon><ThumbsUp onClick={() => this.handleLikeUp(this.props.quizz.votes)} icon="thumbs-up" /></AwesomeIcon></Votes>
-            <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic>
+            <Accordion>
+                <AccordionItem>
+                    <AccordionItemTitle>
+                        <Title>{this.props.quizz.title}</Title>
+                    </AccordionItemTitle>
+                    <AccordionItemBody>
+                        <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
+                        <Votes><ThumbsDown onClick={() => this.handleLikeDown(this.props.quizz.votes)} icon="thumbs-down"/>{this.state.votes}<AwesomeIcon><ThumbsUp onClick={() => this.handleLikeUp(this.props.quizz.votes)} icon="thumbs-up" /></AwesomeIcon></Votes>
+                        <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic>
+                    </AccordionItemBody>
+                </AccordionItem>    
+            </Accordion>
         </Quiz>
     );
   }
