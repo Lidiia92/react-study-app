@@ -6,6 +6,7 @@ import Jumbotron from './components/Jumbotron';
 import NavBar from './components/NavBar';
 import Quizzes from './components/Quizzes';
 import QuizPage from './components/QuizPage';
+import Topics from './components/Topics';
 import { getQuizzes } from './actions';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -57,7 +58,7 @@ class App extends Component {
           <Route 
 
           path="/api/quizzes/topics" 
-          render={props => <div {...props} quizzes={this.props.quizzes}>Test</div> } /> 
+          render={props => <Topics {...props} quizzes={this.props.quizzes}/> } /> 
 
       </div>
     );
