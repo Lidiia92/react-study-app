@@ -1,3 +1,22 @@
 .accordion__title {
     padding: 0;
 }
+
+.title-shadow {
+    font-size: 4.3rem;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+}
+
+.sticky-mint {
+   
+    left: 500px;
+    top: 100px;
+    transform:rotate(4deg);
+    background: #dfd;
+}
+
+/* Large Font for Topics Link */
+
+.large-font {
+    font-size: 7rem;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { Link } from 'react-router-dom';
 
 
 import {
@@ -45,12 +45,13 @@ const Quiz = styled.div`
     }
 `;
 
-const Title = styled.h3`
+export const Title = styled.h3`
     margin: 0;
     padding-top: 8px;
     font-size: 4rem;
     font-family: 'Fredericka the Great', cursive;
     text-align: center;
+    text-transform: uppercase;
 `;
 
 const Author = styled.p`
@@ -65,7 +66,7 @@ const AwesomeIcon = styled.span`
     margin-left: 4px;
 `;
 
-const HeartRed = styled(FontAwesomeIcon)`
+export const HeartRed = styled(FontAwesomeIcon)`
     color: #ff3232;
 `;
 
@@ -93,6 +94,21 @@ const Topic = styled.p`
     text-align: right;
     font-weight: 700;
     margin-right: 10px;
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: none;  
+    }
+
+    &:active{
+        text-decoration: none; 
+    }
+    &:focus {
+        text-decoration: none; 
+    }
 `;
 
 //Component
@@ -127,6 +143,7 @@ class QuizComponent extends React.Component {
     }
 
   render(){
+    console.log('quizzid', this.props.quizz.id);
     return (
         <Quiz>
             <Accordion>
@@ -135,9 +152,12 @@ class QuizComponent extends React.Component {
                         <Title>{this.props.quizz.title}</Title>
                     </AccordionItemTitle>
                     <AccordionItemBody>
-                        <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
+                        <StyledLink  to={`/api/quizzes/single-quiz/${this.props.quizz.id}`}>
+                            <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
+                        </StyledLink>
                         <Votes><ThumbsDown onClick={() => this.handleLikeDown(this.props.quizz.votes)} icon="thumbs-down"/>{this.state.votes}<AwesomeIcon><ThumbsUp onClick={() => this.handleLikeUp(this.props.quizz.votes)} icon="thumbs-up" /></AwesomeIcon></Votes>
-                        <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic>
+                            <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic>
+                       
                     </AccordionItemBody>
                 </AccordionItem>    
             </Accordion>

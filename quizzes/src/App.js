@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter  } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Jumbotron from './components/Jumbotron';
 import NavBar from './components/NavBar';
 import Quizzes from './components/Quizzes';
+import QuizPage from './components/QuizPage';
 import { getQuizzes } from './actions';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHeart, faThumbsUp, faThumbsDown, faCat } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope);
 
 
 // for testing in console
@@ -37,7 +38,7 @@ class App extends Component {
           }} />
 
           <Route 
-   
+            exact
             path="/api/quizzes"
             render={props => {
             return (
@@ -45,6 +46,19 @@ class App extends Component {
             );
           
           }} />
+
+          
+          <Route 
+  
+          path="/api/quizzes/single-quiz/:quizId" 
+          render={props => <QuizPage {...props} quizzes={this.props.quizzes} /> } /> 
+
+          
+          <Route 
+
+          path="/api/quizzes/topics" 
+          render={props => <div {...props} quizzes={this.props.quizzes}>Test</div> } /> 
+
       </div>
     );
   }
@@ -65,8 +79,9 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(
+export default withRouter (
+connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
-
+)(App)
+);
