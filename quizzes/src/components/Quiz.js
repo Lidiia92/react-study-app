@@ -52,6 +52,16 @@ export const Title = styled.h3`
     font-family: 'Fredericka the Great', cursive;
     text-align: center;
     text-transform: uppercase;
+    outline: none;
+
+    &:focus {
+    outline: none;
+    }
+
+    &:active {
+    outline: none;
+    }
+
 `;
 
 const Author = styled.p`
