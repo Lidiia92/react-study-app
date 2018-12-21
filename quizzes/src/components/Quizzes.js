@@ -48,7 +48,7 @@ const Quizzes = props => {
   return (
     <QuizzesContainer>
       <QuizzesHeading>Ohaai, want to meet quiz author? <br /> <SubHeader>Click the Username! <br /> </SubHeader><HeartRed icon="heart"/></QuizzesHeading>
-      <QuizzesHeading className="sticky-mint">Want to learn more about quiz topics. Click here!<br />
+      <QuizzesHeading className="sticky-mint">Want to know trending quiz topics? Click here!<br />
         <StyledLink  className="large-font" to={`/api/quizzes/topics`}>Topics</StyledLink>
       </QuizzesHeading>
       <QuizzesFlex>
