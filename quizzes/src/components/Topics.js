@@ -1,6 +1,5 @@
 import React from "react";
-import Quiz from './Quiz';
-import {HeartRed} from './Quiz';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './css/Quizzes.css';
 import styled from 'styled-components';
 
@@ -84,6 +83,7 @@ const Topics = props => {
                 </div>
                 <p>TOP TRENDING QUIZZES TOPICS IN FSW15 RIGHT NOW</p>
                 <TopicsColumn>{topics.map(topic => <TopicContent key={topic.id} >#{topic}</TopicContent>)}</TopicsColumn>
+               
             </LeftDiv>
             <RightDiv>
                 

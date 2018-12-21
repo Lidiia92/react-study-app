@@ -48,8 +48,8 @@ const NavigationBar = props => {
             <NavItem eventKey={1} href="#">
               Link Right
             </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
+            <NavItem eventKey={2} href="/api/auth/register">
+              Sign Up
             </NavItem>
           </Nav>
         </Navbar.Collapse>

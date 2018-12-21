@@ -26,3 +26,11 @@
 .dropdown-menu>li>a {
   font-size: 1.9rem;
 }
+
+/* Sign Up Form Background */
+.signup-background {
+  height: 95vh;
+  background-image: url("./pictures/rafael-de-nadai-588387-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

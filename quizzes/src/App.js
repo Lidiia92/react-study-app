@@ -7,12 +7,14 @@ import NavBar from './components/NavBar';
 import Quizzes from './components/Quizzes';
 import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
+import SignUpForm from './components/SignUp';
 import { getQuizzes } from './actions';
 import './App.css';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab);
 
 
 // for testing in console
@@ -59,6 +61,11 @@ class App extends Component {
 
           path="/api/quizzes/topics" 
           render={props => <Topics {...props} quizzes={this.props.quizzes}/> } /> 
+
+          <Route 
+
+          path="/api/auth/register" 
+          render={props => <SignUpForm {...props} quizzes={this.props.quizzes}/> } /> 
 
       </div>
     );
