@@ -8,7 +8,8 @@ import Quizzes from './components/Quizzes';
 import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
 import SignUpForm from './components/SignUp';
-import { getQuizzes } from './actions';
+import LogIn from './components/LogIn';
+import { getQuizzes, addUser } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -26,10 +27,11 @@ class App extends Component {
     this.props.getQuizzes();
   }
 
+
   render() {
     return (
       <div className="App">
-          <NavBar />
+          <NavBar users={this.props.users}/>
           <Route 
             exact 
             path="/"
@@ -52,20 +54,23 @@ class App extends Component {
 
           
           <Route 
-  
           path="/api/quizzes/single-quiz/:quizId" 
           render={props => <QuizPage {...props} quizzes={this.props.quizzes} /> } /> 
 
           
           <Route 
-
           path="/api/quizzes/topics" 
           render={props => <Topics {...props} quizzes={this.props.quizzes}/> } /> 
 
           <Route 
 
           path="/api/auth/register" 
-          render={props => <SignUpForm {...props} quizzes={this.props.quizzes}/> } /> 
+          render={props => <SignUpForm {...props} addUser={this.props.addUser} /> } /> 
+
+          <Route 
+
+          path="/api/auth/login" 
+          render={props => <LogIn {...props} quizzes={this.props.quizzes}/> } /> 
 
       </div>
     );
@@ -75,15 +80,18 @@ class App extends Component {
 function mapStateToProps(state) {
   console.log('State in App.js', state);
   return {
+    users: state.users,
     quizzes: state.quizzes,
-    getQuizzes: state.getQuizzes,
-    
+    user: state.user,
+    token: state.token
+
   };
 }
 
 function mapDispatchToProps(dispatch){
   return {
     getQuizzes: () => dispatch(getQuizzes()),
+    addUser: newUser => dispatch(addUser(newUser))
   }
 }
 

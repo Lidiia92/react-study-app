@@ -148,26 +148,41 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+      quizzes: '',
+      username: '',
+      email: '',
+      password: '',
+      img_url: '',
     };
   }
 
-  addSmurf = event => {
-    event.preventDefault();
-    // add code to create the smurf using the api
-
-    axios.post('http://localhost:3333/smurfs', this.state)
-    .then(response => {this.props.updateSmurfList(response.data); console.log(response.data);})
+  componentDidMount() {
+    axios.get(`https://lambda-study-app.herokuapp.com/api/quizzes/`)
+    .then(response => {
+      console.log('response in sign up', response.data); 
+      this.setState({quizzes: response.data}) 
+    })
     .catch(err => console.log(err));
-
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
   }
+
+
+  addNewUser = event => {
+    event.preventDefault();
+    const userList  = this.state.quizzes.map(quiz => {
+        return quiz.author;
+    });
+    const user = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        img_url: this.state.img_url
+    }
+    if(!userList.includes(this.state.username)){
+        this.props.addUser(user);
+        //console.log(user);
+    }
+  }
+
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -176,7 +191,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="signup-background">
-        <form>
+        <form onSubmit={this.addNewUser}>
             <InputsWrapper>
                 <InputsContainer>
                     <HeaderRelative>
@@ -193,27 +208,60 @@ class SignUpForm extends Component {
                      </HeaderRelative>
                     <Heading>Or Be Classical</Heading>
                         <BottomWrapper>
+
                             <InputFieldContent>
                                 <AwesomeIcon icon="grin-beam"/>
-                                <Input type="text" placeholder="Username..."/>
+                                <Input 
+                                required
+                                type="text" 
+                                placeholder="Username..."
+                                onChange={this.handleInputChange}
+                                value={this.state.username}
+                                name="username"
+                                />
                             </InputFieldContent>
+
                             <InputFieldContent>
                                 <AwesomeIcon icon="envelope"/>
-                                <Input type="email" placeholder="Email..."/>
+                                <Input 
+                                required
+                                type="email" 
+                                placeholder="Email..."
+                                onChange={this.handleInputChange}
+                                value={this.state.email}
+                                name="email"
+                                />
+                                
                             </InputFieldContent>
+
                             <InputFieldContent>
                                 <AwesomeIcon icon="unlock-alt"/>
-                                <Input type="password" placeholder="Password..."/>
+                                <Input 
+                                required
+                                type="password" 
+                                placeholder="Password..."
+                                onChange={this.handleInputChange}
+                                value={this.state.password}
+                                name="password"
+                                />
                             </InputFieldContent>
+
                             <InputFieldContent>
                                 <AwesomeIcon icon="images"/>
-                                <Input type="text" placeholder="Image URL..."/>
+                                <Input 
+                                type="text" 
+                                placeholder="Image URL..."
+                                onChange={this.handleInputChange}
+                                value={this.state.img_url}
+                                name="img_url"
+                                />
                             </InputFieldContent>
+
                         </BottomWrapper>
                         <LinkWrpapper>
-                            <StyledLink to="/">GET STARTED</StyledLink>
+                            <button type="submit">GET STARTED</button>
                             <span>OR</span>
-                            <StyledLink to="#">LOG IN</StyledLink>
+                            <StyledLink to="/api/auth/login">LOG IN</StyledLink>
                         </LinkWrpapper>
                         
                 </InputsContainer>
