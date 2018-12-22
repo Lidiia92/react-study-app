@@ -19,7 +19,7 @@ import {
         img_url: 'http://s1.1zoom.me/big0/883/Foxes_Snout_Glance_Whiskers_548306_1024x1024.jpg',
         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzYsImlhdCI6MTU0NTQzNDM5NSwiZXhwIjoxNTc2OTkxOTk1fQ.YmjGBZl-Tfn12IXGZ4g_L-RGy1njxCKKrV8xEDgl1fg',
     },
-
+    isLogged: false,
     fetchingQuizzes: false,
     addingUser: false,
     error: null
