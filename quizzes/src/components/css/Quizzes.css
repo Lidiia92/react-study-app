@@ -15,8 +15,14 @@
     background: #dfd;
 }
 
-/* Large Font for Topics Link */
+/* Changing Background for the Add Quizz btn */
 
-.large-font {
-    font-size: 7rem;
+.add-quizz {
+    margin-left: 40px;
+    border: none;
+    background: rgba(60, 28, 49, 1);
+}
+
+.add-quizz:hover {
+    background: #2a1322;
 }

@@ -1,14 +1,13 @@
 import React from "react";
 import Quiz from './Quiz';
-import {HeartRed} from './Quiz';
 import './css/Quizzes.css';
+import '../App.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import {StyledLink} from './Quiz';
 
 
 export const QuizzesContainer = styled.div`
-  background: #fef4da;
+  background: #fff;
   height: 100%;
   display: flex;
   justify-content: flex-end;
@@ -22,44 +21,84 @@ const QuizzesFlex = styled.div`
 `;
 
 const QuizzesHeading = styled.div`
-  width: 400px;
-  height: 400px;
-  margin-top: 200px;
-  font-family: 'Reenie Beanie', cursive;
-  font-size: 4.5rem;
+  font-size: 9rem;
+  color: white;
+  font-family: 'Poiret One', cursive;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
   text-align: center;
-  position: fixed;
-  top: 30px;
-  left: 100px;
-  background:#ccf;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 30px;
-  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-  transform:rotate(-5deg);
-  border-radius: 3px;
+  text-shadow:   0px 3px 0px #1f3e5a,
+                 0px 14px 10px rgba(0,0,0,0.15),
+                 0px 24px 2px rgba(0,0,0,0.1),
+                 0px 34px 30px rgba(0,0,0,0.1);
 `;
 
-const SubHeader = styled.span`
-    color: #e34262;
+const SubHeader = styled.p`
+    max-width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    letter-spacing: .4rem;
+    font-family: 'Poiret One', cursive;
+    font-size: 4rem;
+    color: #eee;
+    background-image: linear-gradient(to right top, #1c253c, #25233c, #2e213a, #351e36, #3c1c31);
+    opacity: .6;
+    border-radius: 3px;
+    filter: drop-shadow(0 5mm 4mm rgba(28, 37, 60, 1));
+`;
+
+const ButtonsContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+`;
+
+const Topics = styled(Link)`
+  border: 2px solid rgba(204, 204, 204, .5);
+  font-family: 'Poiret One', cursive;
+  font-size: 2.2rem;
+  color: rgba(204, 204, 204, 1);
+  text-transform: uppercase;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 2px;
+  filter: drop-shadow(0 0 0.75rem #1c253c);
+  background: rgba(255, 255, 255, 0);
+
+  &:hover {
+    text-decoration: inherit;
+    color: rgba(204, 204, 204, 1);
+    background: rgba(249, 249, 249, .05);
+  }
+
+  &:focus {
+    text-decoration: inherit;
+    color: inherit;
+  }
 `;
 
 const Quizzes = props => {
   return (
-    <div className="quizzes-background">
-      <QuizzesContainer>
-        <QuizzesHeading>Ohaai, want to meet quiz author? <br /> <SubHeader>Click the Username! <br /> </SubHeader><HeartRed icon="heart"/></QuizzesHeading>
-        <QuizzesHeading className="sticky-mint">Want to know trending quiz topics? Click here!<br />
-          <StyledLink  className="large-font" to={`/api/quizzes/topics`}>Topics</StyledLink>
-        </QuizzesHeading>
-        <QuizzesFlex>
-          {props.quizzes.map(quizz => {
-          return <Quiz key={quizz.id} quizz={quizz} />;
-          })}
-        </QuizzesFlex> 
-    </QuizzesContainer>
+    <div>
+      <div className="quizzes-background">
+        <QuizzesHeading>Lambda Quizzes </QuizzesHeading>
+        <SubHeader>Outstanding Quizzes by Outstanding people </SubHeader>
+        <ButtonsContainer>
+          <Topics  to={`/api/quizzes/topics`}>Topics</Topics>
+          <Topics className="add-quizz" to="#">Add Quizz</Topics>
+        </ButtonsContainer>
+      </div>
+        <QuizzesContainer>
+          <QuizzesFlex>
+            {props.quizzes.map(quizz => {
+            return <Quiz key={quizz.id} quizz={quizz} />;
+            })}
+          </QuizzesFlex> 
+      </QuizzesContainer>
     </div>
-
   );
 };
 
