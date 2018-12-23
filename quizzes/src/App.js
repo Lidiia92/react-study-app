@@ -9,7 +9,7 @@ import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
 import SignUpForm from './components/SignUp';
 import LogIn from './components/LogIn';
-import { getQuizzes, addUser } from './actions';
+import { getQuizzes, addUser, fetchUserInfo } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -24,6 +24,7 @@ window.axios = axios;
 class App extends Component {
 
   componentDidMount() {
+    this.props.fetchUserInfo();
     this.props.getQuizzes();
   }
 
@@ -31,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar users={this.props.users}/>
+          <NavBar users={this.props.users} isLogged={this.props.isLogged} user={this.props.user}/>
           <Route 
             exact 
             path="/"
@@ -70,7 +71,7 @@ class App extends Component {
           <Route 
 
           path="/api/auth/login" 
-          render={props => <LogIn {...props} quizzes={this.props.quizzes}/> } /> 
+          render={props => <LogIn {...props} quizzes={this.props.quizzes} token={this.props.token} user={this.props.user} isLogged={this.props.isLogged}/> } /> 
 
       </div>
     );
@@ -83,7 +84,8 @@ function mapStateToProps(state) {
     users: state.users,
     quizzes: state.quizzes,
     user: state.user,
-    token: state.token
+    token: state.token,
+    isLogged: state.isLogged
 
   };
 }
@@ -91,7 +93,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
   return {
     getQuizzes: () => dispatch(getQuizzes()),
-    addUser: newUser => dispatch(addUser(newUser))
+    addUser: newUser => dispatch(addUser(newUser)),
+    fetchUserInfo: () => dispatch(fetchUserInfo())
   }
 }
 

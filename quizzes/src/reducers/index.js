@@ -6,7 +6,11 @@ import {
     ADD_USER_START,
     ADD_USER_SUCCESS,
     ADD_USER_FAILURE,
-  
+
+    FETCH_USER_FROM_STORAGE_START,
+    FETCH_USER_FROM_STORAGE_SUCCESS,
+    FETCH_USER_FROM_STORAGE_FAILURE,
+
   } from '../actions';
   
   const initialState = {
@@ -17,8 +21,9 @@ import {
         email: 'random@gmail.com',
         password: 'qwerty',
         img_url: 'http://s1.1zoom.me/big0/883/Foxes_Snout_Glance_Whiskers_548306_1024x1024.jpg',
-        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzYsImlhdCI6MTU0NTQzNDM5NSwiZXhwIjoxNTc2OTkxOTk1fQ.YmjGBZl-Tfn12IXGZ4g_L-RGy1njxCKKrV8xEDgl1fg',
+        
     },
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzYsImlhdCI6MTU0NTQzNDM5NSwiZXhwIjoxNTc2OTkxOTk1fQ.YmjGBZl-Tfn12IXGZ4g_L-RGy1njxCKKrV8xEDgl1fg',
     isLogged: false,
     fetchingQuizzes: false,
     addingUser: false,
@@ -64,6 +69,26 @@ import {
         return {
           ...state,
           addingUser: false,
+          error: action.payload
+        };
+
+      case FETCH_USER_FROM_STORAGE_START:
+        return {
+          ...state,
+          isLogged: false
+        };
+
+      case FETCH_USER_FROM_STORAGE_SUCCESS:
+        return {
+          ...state,
+          error: null,
+          isLogged: true,
+        };
+  
+      case FETCH_USER_FROM_STORAGE_FAILURE:
+        return {
+          ...state,
+          isLogged: false,
           error: action.payload
         };
      

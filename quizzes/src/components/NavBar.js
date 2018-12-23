@@ -46,7 +46,7 @@ const NavigationBar = props => {
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={1} href="#">
-              Link Right
+              {props.isLogged ? `Hello, ${props.user.username}...` : `Right Link`}
             </NavItem>
             <NavItem eventKey={2} href="/api/auth/register">
               Sign Up

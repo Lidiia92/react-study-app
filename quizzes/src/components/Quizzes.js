@@ -46,17 +46,20 @@ const SubHeader = styled.span`
 
 const Quizzes = props => {
   return (
-    <QuizzesContainer>
-      <QuizzesHeading>Ohaai, want to meet quiz author? <br /> <SubHeader>Click the Username! <br /> </SubHeader><HeartRed icon="heart"/></QuizzesHeading>
-      <QuizzesHeading className="sticky-mint">Want to know trending quiz topics? Click here!<br />
-        <StyledLink  className="large-font" to={`/api/quizzes/topics`}>Topics</StyledLink>
-      </QuizzesHeading>
-      <QuizzesFlex>
-        {props.quizzes.map(quizz => {
-        return <Quiz key={quizz.id} quizz={quizz} />;
-        })}
-      </QuizzesFlex> 
+    <div className="quizzes-background">
+      <QuizzesContainer>
+        <QuizzesHeading>Ohaai, want to meet quiz author? <br /> <SubHeader>Click the Username! <br /> </SubHeader><HeartRed icon="heart"/></QuizzesHeading>
+        <QuizzesHeading className="sticky-mint">Want to know trending quiz topics? Click here!<br />
+          <StyledLink  className="large-font" to={`/api/quizzes/topics`}>Topics</StyledLink>
+        </QuizzesHeading>
+        <QuizzesFlex>
+          {props.quizzes.map(quizz => {
+          return <Quiz key={quizz.id} quizz={quizz} />;
+          })}
+        </QuizzesFlex> 
     </QuizzesContainer>
+    </div>
+
   );
 };
 

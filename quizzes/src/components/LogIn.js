@@ -146,29 +146,35 @@ const StyledLink = styled(Link)`
 ////Component////
 
 
-class SignUpForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+        email: '',
+        password: '',
+        isLogged: this.props.isLogged
     };
   }
 
-  addSmurf = event => {
+  validateUser = event => {
     event.preventDefault();
     // add code to create the smurf using the api
 
-    axios.post('http://localhost:3333/smurfs', this.state)
-    .then(response => {this.props.updateSmurfList(response.data); console.log(response.data);})
-    .catch(err => console.log(err));
+    if(this.props.user.email === this.state.email && this.props.user.password === this.state.password){
+        alert(`Hello ${this.props.user.username}`);
+        this.setState({
+            ...this.state,
+            isLogged: true
+        })
+        localStorage.setItem('userinfo', JSON.stringify(this.state));
+    } else {
+        alert ('Email and password do not match');
+    }
 
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
+    // this.setState({
+    //   email: '',
+    //   password: ''
+    // });
   }
 
   handleInputChange = e => {
@@ -178,28 +184,43 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="signup-background">
-        <form>
+        <form onSubmit={this.validateUser}>
             <InputsWrapper>
                 <InputsContainer>
                     <HeaderRelative>
                         <PurpleHeader>
                             <IconsContainer>
-                                <p>Log In</p>
+                                <p>{this.state.isLogged || this.props.isLogged? `Welcome, ${this.props.user.username}` : `Log in`}</p>
                             </IconsContainer>
                         </PurpleHeader>
                      </HeaderRelative>
                         <BottomWrapper>
                             <InputFieldContent>
                                 <AwesomeIcon icon="envelope"/>
-                                <Input type="email" placeholder="Email..."/>
+                                <Input 
+                                required
+                                type="email" 
+                                placeholder="Email..."
+                                onChange={this.handleInputChange}
+                                value={this.state.email}
+                                name="email"
+                                />
                             </InputFieldContent>
                             <InputFieldContent>
                                 <AwesomeIcon icon="unlock-alt"/>
-                                <Input type="password" placeholder="Password..."/>
+                                <Input 
+                                required
+                                type="password" 
+                                placeholder="Password..."
+                                onChange={this.handleInputChange}
+                                value={this.state.password}
+                                name="password"
+                                />
                             </InputFieldContent>
                         </BottomWrapper>
                         <LinkWrpapper>
-                            <StyledLink to="/">GET STARTED</StyledLink>
+                            <button type="submit">LOG IN</button>
+                            <StyledLink to="/">HOME</StyledLink>
                         </LinkWrpapper>       
                 </InputsContainer>
             </InputsWrapper>
@@ -209,4 +230,4 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+export default LoginForm;
