@@ -4,21 +4,14 @@ import './css/Quizzes.css';
 import '../App.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 export const QuizzesContainer = styled.div`
-  background: #fff;
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
-
- 
-  
+  margin-top: 90px;
 `;
 
-const QuizzesFlex = styled.div`
-  width: 700px;
-`;
 
 const QuizzesHeading = styled.div`
   font-size: 9rem;
@@ -66,7 +59,6 @@ const Topics = styled(Link)`
   text-decoration: none;
   border-radius: 2px;
   filter: drop-shadow(0 0 0.75rem #1c253c);
-  background: rgba(255, 255, 255, 0);
 
   &:hover {
     text-decoration: inherit;
@@ -80,6 +72,7 @@ const Topics = styled(Link)`
   }
 `;
 
+
 const Quizzes = props => {
   return (
     <div>
@@ -92,11 +85,31 @@ const Quizzes = props => {
         </ButtonsContainer>
       </div>
         <QuizzesContainer>
-          <QuizzesFlex>
-            {props.quizzes.map(quizz => {
-            return <Quiz key={quizz.id} quizz={quizz} />;
-            })}
-          </QuizzesFlex> 
+           <Carousel >
+              {props.quizzes.length && props.quizzes.map(quizz => {
+              return (
+                <div>
+                    <img src="https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg"/>
+                    <div className="legend">
+                      <p>{quizz.title}</p>
+                      <p>{quizz.topic}</p>
+                    </div>
+                    
+                </div> 
+              );
+              })}
+              {/* <div>
+                    <img src="https://www.sunset.com/wp-content/uploads/97cc1a4f0006ff15aca8dc3a0d01860d-800x0-c-default.jpg"/> 
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src="https://www.sunset.com/wp-content/uploads/97cc1a4f0006ff15aca8dc3a0d01860d-800x0-c-default.jpg"/>
+                    <p className="legend">Legend 2</p>
+                </div> 
+                
+                <Quiz key={quizz.id} quizz={quizz}
+                */}
+            </Carousel>
       </QuizzesContainer>
     </div>
   );

@@ -35,7 +35,7 @@
   background-size: cover;
 }
 
-/*Quizzes Form Background */
+/*Quizzes Container Background */
 .quizzes-background{
   height: 95vh;
   background-image: url("./pictures/benjamin-voros-575800-unsplash.jpg");
@@ -46,4 +46,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.quizzes-space-background {
+  background-image: linear-gradient(to right top, #1c253c, #25233c, #2e213a, #351e36, #3c1c31);
 }

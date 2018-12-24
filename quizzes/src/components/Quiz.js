@@ -20,6 +20,7 @@ const Quiz = styled.div`
     transition: all .2s ease-in-out;
     margin-top: 25px;
     padding-bottom: 2px;
+    flex: 0 50%;
     
     &:hover {
         transform: scale(1.1);
@@ -44,6 +45,7 @@ const Quiz = styled.div`
         }
     }
 `;
+
 
 export const Title = styled.h3`
     margin: 0;
@@ -155,23 +157,17 @@ class QuizComponent extends React.Component {
   render(){
     console.log('quizzid', this.props.quizz.id);
     return (
-        <Quiz>
-            <Accordion>
-                <AccordionItem>
-                    <AccordionItemTitle>
-                        <Title>{this.props.quizz.title}</Title>
-                    </AccordionItemTitle>
-                    <AccordionItemBody>
-                        <StyledLink  to={`/api/quizzes/single-quiz/${this.props.quizz.id}`}>
-                            <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
-                        </StyledLink>
-                        <Votes><ThumbsDown onClick={() => this.handleLikeDown(this.props.quizz.votes)} icon="thumbs-down"/>{this.state.votes}<AwesomeIcon><ThumbsUp onClick={() => this.handleLikeUp(this.props.quizz.votes)} icon="thumbs-up" /></AwesomeIcon></Votes>
-                            <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic>
-                       
-                    </AccordionItemBody>
-                </AccordionItem>    
-            </Accordion>
-        </Quiz>
+        <div>
+                <img src="https://www.sunset.com/wp-content/uploads/97cc1a4f0006ff15aca8dc3a0d01860d-800x0-c-default.jpg"/>
+                {/* <Title>{this.props.quizz.title}</Title>
+
+                <StyledLink  to={`/api/quizzes/single-quiz/${this.props.quizz.id}`}>
+                    <Author>Made By: {this.props.quizz.author}<AwesomeIcon><HeartRed icon="heart" /></AwesomeIcon></Author>
+                </StyledLink>
+                <Votes><ThumbsDown onClick={() => this.handleLikeDown(this.props.quizz.votes)} icon="thumbs-down"/>{this.state.votes}<AwesomeIcon><ThumbsUp onClick={() => this.handleLikeUp(this.props.quizz.votes)} icon="thumbs-up" /></AwesomeIcon></Votes>
+                <Topic>Topic: {this.props.quizz.topic} <FontAwesomeIcon icon="cat"/></Topic> */}
+                <p className="legend">Legend 2</p>
+        </div>
     );
   }
 };
