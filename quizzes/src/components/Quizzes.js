@@ -1,11 +1,13 @@
 import React from "react";
 import Quiz from './Quiz';
-import './css/Quizzes.css';
 import '../App.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import './css/Quizzes.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 export const QuizzesContainer = styled.div`
   height: 100%;
@@ -72,6 +74,19 @@ const Topics = styled(Link)`
   }
 `;
 
+const QuizzWrapper = styled.div`
+  position: relative;
+`;
+
+const QuizAdded = styled.h2`
+  font-family: 'Poiret One', cursive;
+  font-size: 7rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.1rem;
+  font-weight: bold;
+  color: #4c1f4c;
+`;
 
 const Quizzes = props => {
   return (
@@ -85,17 +100,20 @@ const Quizzes = props => {
         </ButtonsContainer>
       </div>
         <QuizzesContainer>
+          <QuizAdded>Recently added <FontAwesomeIcon icon="user-astronaut"/></QuizAdded>
            <Carousel >
               {props.quizzes.length && props.quizzes.map(quizz => {
               return (
-                <div>
-                    <img src="https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg"/>
-                    <div className="legend">
-                      <p>{quizz.title}</p>
-                      <p>{quizz.topic}</p>
-                    </div>
-                    
-                </div> 
+                <QuizzWrapper key={quizz.id}>
+                    <img src="https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg" id="slider"/>
+                      <div id="legend" className="legend">
+                        <h4>{quizz.title}</h4>
+                        <p className="topic">Topic: {quizz.topic}</p>
+                        <Link  to={`/api/quizzes/single-quiz/${quizz.id}`} className="btn-slider">
+                          Learn more
+                        </Link>
+                      </div>  
+                </QuizzWrapper> 
               );
               })}
               {/* <div>

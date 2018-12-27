@@ -26,3 +26,92 @@
 .add-quizz:hover {
     background: #2a1322;
 }
+
+/*Changing the styles of class legend for the slyder*/
+
+.carousel .slide .legend {
+  
+    margin-left: 0;
+    width: 40%;
+    
+}
+
+.carousel .slide #legend h4 {
+    font-size: 4rem;
+    text-align: left;
+    margin-left: 20px;
+    letter-spacing: 1.1rem;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(165,143,165, .4);
+}
+
+.legendWrapper {
+    display: flex;
+    width: 200%;
+    justify-content: center;
+    
+}
+
+.carousel .slide #slider{
+    width: 50%;
+}
+
+.carousel .slide #legend{
+    /* bottom: 550px; */
+    width: 40%;
+    font-family: 'Poiret One', cursive;
+    left: 75%;
+    background: rgba(76, 31, 76, .9);
+    border-radius: 2px;
+   
+ }
+
+ .topic {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.05rem;
+    margin-bottom: 20px;
+
+ }
+
+ .btn-slider {
+    border: 2px solid rgba(204, 204, 204, .5);
+    font-family: 'Poiret One', cursive;
+    font-size: 1.6rem;
+    color: rgba(204, 204, 204, 1);
+    text-transform: uppercase;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    letter-spacing: .5rem;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    filter: drop-shadow(0 0 0.75rem #1c253c);
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    margin-bottom: 10px;
+   
+ }
+
+ .btn-slider:hover {
+    text-decoration: none;
+    color: rgba(204, 204, 204, 1);
+    background: rgba(249, 249, 249, .05);
+ }
+
+ .btn-slider:focus {
+    text-decoration: none;
+    color: rgba(204, 204, 204, 1);
+    background: rgba(249, 249, 249, .05);
+ }
+
+ .carousel .carousel-status {
+    font-family: 'Poiret One', cursive;
+    font-size: 25px !important;
+    color: rgba(165, 143, 165, 1);
+ }

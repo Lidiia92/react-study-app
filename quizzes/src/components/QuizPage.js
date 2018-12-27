@@ -117,7 +117,7 @@ class QuizPage extends Component {
     componentDidMount() {
         axios.get(`https://lambda-study-app.herokuapp.com/api/quizzes/${this.props.match.params.quizId}`)
         .then(response => {
-          console.log('reponse', response.data.author); 
+          console.log('reponse quizpage', response.data); 
           this.setState({quiz: response.data, author: response.data.author}) 
         })
         .catch(err => console.log(err));

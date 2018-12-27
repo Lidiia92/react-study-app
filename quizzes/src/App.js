@@ -13,9 +13,9 @@ import { getQuizzes, addUser, fetchUserInfo } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut);
 
 
 // for testing in console
@@ -56,7 +56,7 @@ class App extends Component {
           
           <Route 
           path="/api/quizzes/single-quiz/:quizId" 
-          render={props => <QuizPage {...props} quizzes={this.props.quizzes} /> } /> 
+          render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token}/> } /> 
 
           
           <Route 
