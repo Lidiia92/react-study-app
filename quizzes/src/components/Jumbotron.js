@@ -20,7 +20,7 @@ const JumbotronStyled = styled(Jumbotron)`
 const Heading = styled.h2`
     font-size: 7.5rem;
     margin-bottom: 25px;
-    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Montserrat', sans-serif;
 `;
 
 const SubHeading = styled.h4`
@@ -29,11 +29,10 @@ const SubHeading = styled.h4`
 `;
 
 const ButtonPrimary = styled(Button)`
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    font-weight: bold;
 `;
 /* Component */
 
@@ -42,7 +41,7 @@ const JumbotronComponent = props => {
     <div className="jumbotron-background">
         <Header>
                 <JumbotronStyled>
-                    <Heading>You are one smart Cookie!</Heading>
+                    <Heading>You are out of this world!</Heading>
                     <SubHeading>
                         Test your knowledge! Take our quiz.
                     </SubHeading>

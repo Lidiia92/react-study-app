@@ -19,7 +19,8 @@
 
 .navbar-inverse .navbar-nav>li>a {
   color: #b0b0b0;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
+  letter-spacing: .2rem;
   
 }
 
@@ -50,4 +51,15 @@
 
 .quizzes-space-background {
   background-image: linear-gradient(to right top, #1c253c, #25233c, #2e213a, #351e36, #3c1c31);
+}
+
+
+/* Quiz page background */
+
+.quizPage-background {
+  height: 100vh;
+  background-image: url("./pictures/thomas-curryer-106228-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 40%;
 }

@@ -116,17 +116,6 @@ const Quizzes = props => {
                 </QuizzWrapper> 
               );
               })}
-              {/* <div>
-                    <img src="https://www.sunset.com/wp-content/uploads/97cc1a4f0006ff15aca8dc3a0d01860d-800x0-c-default.jpg"/> 
-                    <p className="legend">Legend 1</p>
-                </div>
-                <div>
-                    <img src="https://www.sunset.com/wp-content/uploads/97cc1a4f0006ff15aca8dc3a0d01860d-800x0-c-default.jpg"/>
-                    <p className="legend">Legend 2</p>
-                </div> 
-                
-                <Quiz key={quizz.id} quizz={quizz}
-                */}
             </Carousel>
       </QuizzesContainer>
     </div>

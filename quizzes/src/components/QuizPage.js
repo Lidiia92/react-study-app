@@ -4,106 +4,138 @@ import '../App.css';
 import './css/Quizzes.css';
 import styled from 'styled-components';
 import '../pictures/cute-fox-vector.jpg';
-import {Title} from './Quiz';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const QuizPageContainer = styled.div`
-    background: #fff;
+    background: linear-gradient(#21d2fb, #092645);
+    max-width: 1224px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    color: #eee;
 `;
 
 const Avatar = styled.img`
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 100% 0;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    border: 6px solid #e5ad00;
+    /* object-position: 100% 0; */
+    margin-top: 40px;
+    filter: drop-shadow(0 0 0.75rem #1c253c);
 `;
+
 
 const UserHeading = styled.div`
-    background: #FFC100;
     display: flex;
     flex-direction: column-reverse;
-    align-items: center;
+    align-items: flex-start;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 
 `;
 
-const UserSubHeading = styled.p`
+const Username = styled.h3`
+    font-family: 'Poiret One', cursive;
+    color: #252628;
+    text-transform: capitalize;
     font-size: 3rem;
-    font-weight: 700;
-    margin-right: 10px;
-    margin-top: 15px;
-    color: #337ab7;
+    margin-top: 0;
+    margin-left: 20px;
+    
 `;
 
-const UserBody = styled.div`
-    border: 20px solid #fff;
+
+const QuizBody = styled.div`
     border-radius: 2px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background:  #252628;
+    height: 540px;
+`;
+
+const QuizContent = styled.div`
+    width: 90%;
+    margin: 30px auto 30px auto;
     display: flex;
-    align-items: stretch;
-    height: 405px;
-`;
 
-const LeftDiv = styled.div`
-    width: 30%;
-    background: #fc5956;
-`;
-
-const RightDiv = styled.div`
-    width: 70%;
-    background: #f8f8f8;
-    text-align: right;
-
-    h3 {
-        font-size: 4rem;
-        font-weight: bold;
-        padding-right: 25px;
-    }
-
-    p {
-       
-        padding-left: 150px;
-        font-size: 2rem;
-        font-weight: 200;
-        font-family: 'Open Sans', sans-serif;
-        text-align: justify;
-        margin-top: 42px;
-       
+    span {
+        margin-left: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        letter-spacing: .1rem;
     }
 `;
 
-const HeaderContainer = styled.div`
+const QuizTitle = styled.div`
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding-top: 40px;
+    font-size: 4rem;
+
+`;
+
+
+const Marker = styled(FontAwesomeIcon)`
+    color: #1fcff8;
+    font-size: 1.6rem;
+`;
+
+const TriangleDiv = styled.div`
+    width: 200px;
+    background: #21d2fb;
+    clip-path: polygon(46% 100%, 0 0, 100% 0);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+    border-radius: 2px;
+
+    div {
+        font-size: 2.5rem;
+        margin-left: 60px;
+        margin-right: 40px;
+        text-align: center;
+        padding-bottom: 60px; 
+    }
+`;
+
+const LeftWrapper = styled.div`
+    padding-top: 20px;
+    padding-right: 30px;
+`;
+
+
+const Globe = styled(FontAwesomeIcon)`
+    font-size: 3.5rem;
+`;
+
+const PentagonWrapper = styled.div`
     position: relative;
+
 `;
 
-const Header = styled.p`
+const Pentagon = styled.img`
+    width: 550px;
+    height: 500px;
+    clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%, 0 70%);
     position: absolute;
-    top: 50px;
-    left: 380px;
-    font-family: Arial, Helvetica,sans-serif;
-    font-size: 9rem;
-    font-weight: 900;
-    color: black;
+    top: -205px;
+    left: 35px;
+    object-fit: cover;
+    padding-right: 20px;
+    border-radius: 2px;
 `;
 
-const Dot = styled.span`
-    height: 25px;
-    width: 25px;
-    background-color: #fc5956;
-    border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-    top: 200px;
-    left: 200px;
-`;
+const Description = styled.p`
+    width: 260px;
 
-const Contact = styled(FontAwesomeIcon)`
-    font-size: 7rem;
-    padding-right: 25px;
 `;
-
 
 class QuizPage extends Component {
     constructor(props){
@@ -127,30 +159,39 @@ class QuizPage extends Component {
     render(){
         console.log('test 2', this.state.quiz);
         return (
-            <QuizPageContainer >
-                <UserHeading>
-                    <UserSubHeading>Freelance Web Developer, React/Redux Wiz, Best Friend of JavaScript, Professional Cool Person.</UserSubHeading>
-                    <Title className="title-shadow">{this.state.author.username}</Title>
-                    {this.state.author.img_url ? (
-                        <Avatar src={this.state.author.img_url} />
-                    ) : (
-                        <Avatar src="https://cdn5.vectorstock.com/i/1000x1000/86/59/cute-fox-vector-5988659.jpg" alt="Fox avatar"/>
-                    )}
-                </UserHeading>
-                <UserBody>
-                    <LeftDiv>
-                        <HeaderContainer>
-                            <Header>HE<br/>LLO<Dot></Dot></Header>
-                        </HeaderContainer>
-                    </LeftDiv>
-                    <RightDiv>
-                        <h3>About Me</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <Contact icon="envelope"/>
-                        
-                    </RightDiv>
-                </UserBody>
-            </QuizPageContainer>
+            <div className="quizPage-background">
+                <QuizPageContainer >
+                    <UserHeading>
+            
+                        <Username >{this.state.author.username}</Username>
+                        {this.state.author.img_url ? (
+                            <Avatar src={this.state.author.img_url} />
+                        ) : (
+                            <Avatar src="http://www.spiritanimal.info/wp-content/uploads/Owl-Spirit-Animal-4.jpg" alt="Fox avatar"/>
+                        )}
+                    </UserHeading>
+                    <QuizBody>
+                        <QuizContent>
+                            <div>
+                                <QuizTitle className="quiz-title">{this.state.quiz.title}</QuizTitle>
+                                <p><Marker icon="marker"/><span>{this.state.quiz.topic}</span></p>
+                                <Description>VueJS is implemented as some kind of deployment-ready files. Ramda is a predictable state container for asynchronous HTTP requests. Transmitting information about the subject, maintains a standard defining how to extend JavaScript. BEM is a given context in C. DOM in C.</Description>
+                            </div>
+                            <LeftWrapper>
+                                <TriangleDiv>
+                                    <div>
+                                        <Globe icon="globe-americas"/>
+                                        <p>4810</p>
+                                    </div>
+                                </TriangleDiv>
+                                <PentagonWrapper>
+                                    <Pentagon src="https://images.unsplash.com/photo-1467131825866-8e0a12d12448?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80" />
+                                </PentagonWrapper>
+                            </LeftWrapper>
+                        </QuizContent>
+                    </QuizBody>
+                </QuizPageContainer>
+            </div>
         );
     }
 }

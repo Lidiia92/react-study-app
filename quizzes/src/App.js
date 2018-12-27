@@ -13,9 +13,9 @@ import { getQuizzes, addUser, fetchUserInfo } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faGlobeAmericas} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faGlobeAmericas);
 
 
 // for testing in console

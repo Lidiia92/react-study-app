@@ -10,7 +10,8 @@ const Brand = styled.a.attrs({
     &&& {
       color: #b0b0b0;
       font-size: 3rem;
-      font-family: 'Fredericka the Great', cursive;
+      font-family: 'Poiret One', cursive;
+      font-weight: bold;
 
       &:hover {
           color: #fff;
@@ -26,7 +27,7 @@ const NavigationBar = props => {
         <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Brand href="/">SmartCookie</Brand>
+            <Brand href="/">LAMBDaQUIZ</Brand>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
