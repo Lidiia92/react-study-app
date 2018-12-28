@@ -23,7 +23,18 @@
 
 .add-quizz:hover {
     background: #2a1322;
-    text-decoration: inherit;
+    text-decoration: none;
+    color: rgba(204, 204, 204, 1);
+}
+
+.add-quizz:visited {
+    text-decoration: none;
+    color: rgba(204, 204, 204, 1);
+}
+
+.add-quizz:focus {
+
+    text-decoration: none;
     color: rgba(204, 204, 204, 1);
 }
 
@@ -35,13 +46,6 @@
     border-radius: 2px;
 }
 
-/* .carousel .slide .legend {
-  
-    margin-left: 0;
-    width: 80%;
-    
-}
-*/
 .carousel .slide #legend h4 {
     font-size: 2rem;
     text-align: left;

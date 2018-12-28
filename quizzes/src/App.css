@@ -37,7 +37,8 @@
 
 /* Sign Up Form Background */
 .signup-background {
-  height: 95vh;
+  height: 102vh;
+  padding-top: 50px;
   background-image: url("./pictures/rafael-de-nadai-588387-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;

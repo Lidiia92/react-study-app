@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './css/Quizzes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 
 export const QuizzesContainer = styled.div`
@@ -99,7 +100,7 @@ class JumbotronComponent extends Component {
             <SubHeader>Outstanding Quizzes by Outstanding people </SubHeader>
             <ButtonsContainer>
               <Topics  to={`/api/quizzes/topics`}>Topics</Topics>
-              <a className="add-quizz" href="#add-quiz">Add Quizz</a>
+              <AnchorLink  className="add-quizz" href="#add-quiz">Add Quizz</AnchorLink>
             </ButtonsContainer>
           </div>
           <AddNewQuiz token={this.props.token} addQuiz={this.props.addQuiz}/>
