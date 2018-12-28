@@ -153,31 +153,10 @@ class AddNewQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        email: '',
-        password: '',
-        isLogged: this.props.isLogged
+        title: '',
+        topic: ''
+        
     };
-  }
-
-  validateUser = event => {
-    event.preventDefault();
-    // add code to create the smurf using the api
-
-    if(this.props.user.email === this.state.email && this.props.user.password === this.state.password){
-        alert(`Hello ${this.props.user.username}`);
-        this.setState({
-            ...this.state,
-            isLogged: true
-        })
-        localStorage.setItem('userinfo', JSON.stringify(this.state));
-    } else {
-        alert ('Email and password do not match');
-    }
-
-    // this.setState({
-    //   email: '',
-    //   password: ''
-    // });
   }
 
   handleInputChange = e => {
@@ -187,7 +166,7 @@ class AddNewQuiz extends Component {
   render() {
     return (
       <div id="add-quiz" className="signup-background">
-        <form onSubmit={this.validateUser}>
+        <form onSubmit={() => this.props.addQuiz(this.state, this.props.token)}>
             <InputsWrapper>
                 <InputsContainer>
                     <HeaderRelative>
@@ -202,22 +181,22 @@ class AddNewQuiz extends Component {
                                 <AwesomeIcon icon="code"/>
                                 <Input 
                                 required
-                                type="email" 
-                                placeholder="Email..."
+                                type="text" 
+                                placeholder="Title..."
                                 onChange={this.handleInputChange}
-                                value={this.state.email}
-                                name="email"
+                                value={this.state.title}
+                                name="title"
                                 />
                             </InputFieldContent>
                             <InputFieldContent>
-                                <AwesomeIcon icon="unlock-alt"/>
+                                <AwesomeIcon icon="comment-alt"/>
                                 <Input 
                                 required
-                                type="password" 
-                                placeholder="Password..."
+                                type="text" 
+                                placeholder="Topic..."
                                 onChange={this.handleInputChange}
-                                value={this.state.password}
-                                name="password"
+                                value={this.state.topic}
+                                name="topic"
                                 />
                             </InputFieldContent>
                         </BottomWrapper>

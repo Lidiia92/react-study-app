@@ -9,13 +9,13 @@ import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
 import SignUpForm from './components/SignUp';
 import LogIn from './components/LogIn';
-import { getQuizzes, addUser, fetchUserInfo, deleteQuiz } from './actions';
+import { getQuizzes, addUser, fetchUserInfo, deleteQuiz, addQuiz } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode, faCommentAlt} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode, faCommentAlt);
 
 
 // for testing in console
@@ -38,7 +38,7 @@ class App extends Component {
             path="/"
             render={props => {
             return (
-              <Jumbotron {...props}  />
+              <Jumbotron {...props} addQuiz={this.props.addQuiz} token={this.props.token} />
             );
           
           }} />
@@ -95,7 +95,8 @@ function mapDispatchToProps(dispatch){
     getQuizzes: () => dispatch(getQuizzes()),
     addUser: newUser => dispatch(addUser(newUser)),
     fetchUserInfo: () => dispatch(fetchUserInfo()),
-    deleteQuiz: (quizId, token) => dispatch(deleteQuiz(quizId, token))
+    deleteQuiz: (quizId, token) => dispatch(deleteQuiz(quizId, token)),
+    addQuiz: (newQuiz, token) => dispatch(addQuiz(newQuiz, token))
   }
 }
 

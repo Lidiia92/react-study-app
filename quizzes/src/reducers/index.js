@@ -13,7 +13,12 @@ import {
 
     DELETE_QUIZ_START,
     DELETE_QUIZ_SUCCESS,
-    DELETE_QUIZ_FAILURE
+    DELETE_QUIZ_FAILURE,
+
+    ADD_QUIZ_START,
+    ADD_QUIZ_SUCCESS,
+    ADD_QUIZ_FAILURE,
+
 
   } from '../actions';
   
@@ -31,6 +36,7 @@ import {
     isLogged: false,
     fetchingQuizzes: false,
     addingUser: false,
+    addingQuiz: false,
     deletingQuiz: false,
     error: null
   };
@@ -113,7 +119,25 @@ import {
           ...state,
           deletingQuiz: false,
           error: action.payload
-        };  
+        };
+        
+      case ADD_QUIZ_START:
+        return {
+          ...state,
+          addingQuiz: true
+        };
+      case ADD_QUIZ_SUCCESS:
+        return {
+          ...state,
+          addingQuiz: false,
+          quizzes: action.payload
+        };
+      case ADD_QUIZ_FAILURE:
+        return {
+          ...state,
+          addingQuiz: false,
+          error: action.payload
+        };
      
       default:
         return state;

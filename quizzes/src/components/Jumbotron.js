@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Component } from 'react';
 import '../App.css';
 import AddNewQuiz from './AddNewQuiz';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 import './css/Quizzes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -87,21 +86,27 @@ const QuizAdded = styled.h2`
   font-weight: bold;
   color: #4c1f4c;
 `;
+class JumbotronComponent extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-const JumbotronComponent = props => {
-  return (
-    <div>
-      <div className="quizzes-background">
-        <QuizzesHeading>Lambda Quizzes </QuizzesHeading>
-        <SubHeader>Outstanding Quizzes by Outstanding people </SubHeader>
-        <ButtonsContainer>
-          <Topics  to={`/api/quizzes/topics`}>Topics</Topics>
-          <a className="add-quizz" href="#add-quiz">Add Quizz</a>
-        </ButtonsContainer>
-      </div>
-      <AddNewQuiz />
-    </div>
-  );
+  render(){
+    return (
+        <div>
+          <div className="quizzes-background">
+            <QuizzesHeading>Lambda Quizzes </QuizzesHeading>
+            <SubHeader>Outstanding Quizzes by Outstanding people </SubHeader>
+            <ButtonsContainer>
+              <Topics  to={`/api/quizzes/topics`}>Topics</Topics>
+              <a className="add-quizz" href="#add-quiz">Add Quizz</a>
+            </ButtonsContainer>
+          </div>
+          <AddNewQuiz token={this.props.token} addQuiz={this.props.addQuiz}/>
+        </div>
+      );
+  }
+
 };
 
 export default JumbotronComponent;
