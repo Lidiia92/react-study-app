@@ -12,6 +12,10 @@ export const FETCH_USER_FROM_STORAGE_START = "FETCH_USER_FROM_STORAGE_START";
 export const FETCH_USER_FROM_STORAGE_SUCCESS = "FETCH_USER_FROM_STORAGE_SUCCESS";
 export const FETCH_USER_FROM_STORAGE_FAILURE = "FETCH_USER_FROM_STORAGE_FAILURE";
 
+export const DELETE_QUIZ_START = 'DELETE_QUIZ_START';
+export const DELETE_QUIZ_SUCCESS = 'DELETE_QUIZ_SUCCESS';
+export const DELETE_QUIZ_FAILURE = 'DELETE_QUIZ_FAILURE';
+
 
 export const getQuizzes = () => dispatch => {
     dispatch({ type: FETCH_QUIZZES_START });
@@ -48,4 +52,20 @@ export const addUser = newUser => dispatch => {
     } else {
       dispatch({ type: FETCH_USER_FROM_STORAGE_FAILURE, payload: errMessage})
     }
+  };
+
+  export const deleteQuiz = (quizId, token) => dispatch => {
+    dispatch({ type: DELETE_QUIZ_START });
+    axios({
+      method: 'delete',
+      url: `https://lambda-study-app.herokuapp.com/api/quizzes/${quizId}`,
+      headers: {
+        Authorization: token
+      }
+    })
+      .then(response => {
+        console.log('Deleting the quiz', response);
+        dispatch({ type: DELETE_QUIZ_SUCCESS, payload: response.data });
+      })
+      .catch(err => dispatch({ type: DELETE_QUIZ_FAILURE, payload: err }));
   };

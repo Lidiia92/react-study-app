@@ -9,13 +9,13 @@ import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
 import SignUpForm from './components/SignUp';
 import LogIn from './components/LogIn';
-import { getQuizzes, addUser, fetchUserInfo } from './actions';
+import { getQuizzes, addUser, fetchUserInfo, deleteQuiz } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faGlobeAmericas} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faGlobeAmericas);
+library.add(faHeart, faThumbsUp, faThumbsDown, faCat, faEnvelope, fab, faGrinBeam, faUnlockAlt, faImages, faUserAstronaut, faMarker, faStar, faEdit, faTrashAlt, faCode);
 
 
 // for testing in console
@@ -56,7 +56,7 @@ class App extends Component {
           
           <Route 
           path="/api/quizzes/single-quiz/:quizId" 
-          render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token}/> } /> 
+          render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token} deleteQuiz={this.props.deleteQuiz}/> } /> 
 
           
           <Route 
@@ -94,7 +94,8 @@ function mapDispatchToProps(dispatch){
   return {
     getQuizzes: () => dispatch(getQuizzes()),
     addUser: newUser => dispatch(addUser(newUser)),
-    fetchUserInfo: () => dispatch(fetchUserInfo())
+    fetchUserInfo: () => dispatch(fetchUserInfo()),
+    deleteQuiz: (quizId, token) => dispatch(deleteQuiz(quizId, token))
   }
 }
 

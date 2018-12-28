@@ -5,14 +5,16 @@ import './css/Quizzes.css';
 import styled from 'styled-components';
 import '../pictures/cute-fox-vector.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { Topics } from './Quizzes';
 
 const QuizPageContainer = styled.div`
     background: linear-gradient(#21d2fb, #092645);
     max-width: 1224px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
     color: #eee;
+    padding-bottom: 50px;
 `;
 
 const Avatar = styled.img`
@@ -54,6 +56,7 @@ const QuizBody = styled.div`
     margin-right: auto;
     background:  #252628;
     height: 540px;
+    filter: drop-shadow(0 5mm 4mm rgba(0, 0, 0, .3));
 `;
 
 const QuizContent = styled.div`
@@ -74,13 +77,15 @@ const QuizTitle = styled.div`
     font-weight: 400;
     padding-top: 40px;
     font-size: 4rem;
+    color: rgba(204,204,204,1);
 
 `;
 
 
 const Marker = styled(FontAwesomeIcon)`
-    color: #1fcff8;
     font-size: 1.6rem;
+    margin-top: 10px;
+    color: rgba(204,204,204,1);
 `;
 
 const TriangleDiv = styled.div`
@@ -102,6 +107,10 @@ const TriangleDiv = styled.div`
         margin-right: 40px;
         text-align: center;
         padding-bottom: 60px; 
+
+        p{
+            font-size: 1.8rem;
+        }
     }
 `;
 
@@ -125,7 +134,7 @@ const Pentagon = styled.img`
     height: 500px;
     clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%, 0 70%);
     position: absolute;
-    top: -205px;
+    top: -194px;
     left: 35px;
     object-fit: cover;
     padding-right: 20px;
@@ -134,15 +143,39 @@ const Pentagon = styled.img`
 
 const Description = styled.p`
     width: 260px;
+    color: rgba(204,204,204,1);
 
 `;
+
+const AwesomeIcon = styled(FontAwesomeIcon)`
+    margin-left: 20px;
+    font-weight: 100;
+`;
+
+const Votes = styled.span`
+    display: block;
+    margin-top: 42px;
+    margin-left: 220px;
+    color: rgba(204,204,204,1);
+    text-align: right;
+    font-size: 2rem;
+`;
+const Heart = styled(FontAwesomeIcon)`
+  color: rgba(204,204,204,1);
+  margin-left: 10px;
+
+`;
+
+
+////Component///
 
 class QuizPage extends Component {
     constructor(props){
         super(props);
         this.state = {
             quiz: '', 
-            author: ''
+            author: '',
+            token: props.token
         }
     }
 
@@ -176,12 +209,20 @@ class QuizPage extends Component {
                                 <QuizTitle className="quiz-title">{this.state.quiz.title}</QuizTitle>
                                 <p><Marker icon="marker"/><span>{this.state.quiz.topic}</span></p>
                                 <Description>VueJS is implemented as some kind of deployment-ready files. Ramda is a predictable state container for asynchronous HTTP requests. Transmitting information about the subject, maintains a standard defining how to extend JavaScript. BEM is a given context in C. DOM in C.</Description>
+                                <Topics to="#" className="topics-small">Edit <AwesomeIcon icon="edit"/></Topics>
+                                <Topics to="#"
+                                
+                                className="topics-small" 
+                                onClick={() => this.props.deleteQuiz(this.state.quiz.id, this.state.token)}>
+                                    Delete <AwesomeIcon icon="trash-alt"/>
+                                 </Topics>
+                                <Votes>{this.state.quiz.votes}<Heart icon="heart"/></Votes>
                             </div>
                             <LeftWrapper>
                                 <TriangleDiv>
                                     <div>
-                                        <Globe icon="globe-americas"/>
-                                        <p>4810</p>
+                                        <Globe icon="star"/>
+                                        <p>Favorite</p>
                                     </div>
                                 </TriangleDiv>
                                 <PentagonWrapper>

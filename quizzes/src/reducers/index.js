@@ -11,6 +11,10 @@ import {
     FETCH_USER_FROM_STORAGE_SUCCESS,
     FETCH_USER_FROM_STORAGE_FAILURE,
 
+    DELETE_QUIZ_START,
+    DELETE_QUIZ_SUCCESS,
+    DELETE_QUIZ_FAILURE
+
   } from '../actions';
   
   const initialState = {
@@ -27,6 +31,7 @@ import {
     isLogged: false,
     fetchingQuizzes: false,
     addingUser: false,
+    deletingQuiz: false,
     error: null
   };
   
@@ -91,6 +96,24 @@ import {
           isLogged: false,
           error: action.payload
         };
+      
+      case DELETE_QUIZ_START:
+        return {
+          ...state,
+          deletingQuiz: true
+        };
+      case DELETE_QUIZ_SUCCESS:
+        return {
+          ...state,
+          deletingQuiz: false,
+          quizzes: action.payload
+        };
+      case DELETE_QUIZ_FAILURE:
+        return{
+          ...state,
+          deletingQuiz: false,
+          error: action.payload
+        };  
      
       default:
         return state;

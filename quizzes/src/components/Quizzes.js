@@ -1,5 +1,4 @@
 import React from "react";
-import Quiz from './Quiz';
 import '../App.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -15,40 +14,7 @@ export const QuizzesContainer = styled.div`
 `;
 
 
-const QuizzesHeading = styled.div`
-  font-size: 9rem;
-  color: white;
-  font-family: 'Poiret One', cursive;
-  text-transform: uppercase;
-  letter-spacing: .5rem;
-  text-align: center;
-  text-shadow:   0px 3px 0px #1f3e5a,
-                 0px 14px 10px rgba(0,0,0,0.15),
-                 0px 24px 2px rgba(0,0,0,0.1),
-                 0px 34px 30px rgba(0,0,0,0.1);
-`;
-
-const SubHeader = styled.p`
-    max-width: 1200px;
-    padding-left: 15px;
-    padding-right: 15px;
-    letter-spacing: .4rem;
-    font-family: 'Poiret One', cursive;
-    font-size: 4rem;
-    color: #eee;
-    background-image: linear-gradient(to right top, #1c253c, #25233c, #2e213a, #351e36, #3c1c31);
-    opacity: .6;
-    border-radius: 3px;
-    filter: drop-shadow(0 5mm 4mm rgba(28, 37, 60, 1));
-`;
-
-const ButtonsContainer = styled.div`
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-`;
-
-const Topics = styled(Link)`
+export const Topics = styled(Link)`
   border: 2px solid rgba(204, 204, 204, .5);
   font-family: 'Poiret One', cursive;
   font-size: 2.2rem;
@@ -91,17 +57,9 @@ const QuizAdded = styled.h2`
 const Quizzes = props => {
   return (
     <div>
-      <div className="quizzes-background">
-        <QuizzesHeading>Lambda Quizzes </QuizzesHeading>
-        <SubHeader>Outstanding Quizzes by Outstanding people </SubHeader>
-        <ButtonsContainer>
-          <Topics  to={`/api/quizzes/topics`}>Topics</Topics>
-          <Topics className="add-quizz" to="#">Add Quizz</Topics>
-        </ButtonsContainer>
-      </div>
         <QuizzesContainer>
           <QuizAdded>Recently added <FontAwesomeIcon icon="user-astronaut"/></QuizAdded>
-           <Carousel >
+           <Carousel className="carousel-custom">
               {props.quizzes.length && props.quizzes.map(quizz => {
               return (
                 <QuizzWrapper key={quizz.id}>

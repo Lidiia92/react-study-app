@@ -1,33 +1,37 @@
-.accordion__title {
-    padding: 0;
-}
 
-.title-shadow {
-    font-size: 4.3rem;
-    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
-}
-
-.sticky-mint {
-   
-    left: 500px;
-    top: 100px;
-    transform:rotate(4deg);
-    background: #dfd;
-}
 
 /* Changing Background for the Add Quizz btn */
+
+
 
 .add-quizz {
     margin-left: 40px;
     border: none;
     background: rgba(60, 28, 49, 1);
+    font-family: 'Poiret One', cursive;
+    font-size: 2.2rem;
+    color: rgba(204, 204, 204, 1);
+    text-transform: uppercase;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    filter: drop-shadow(0 0 0.75rem #1c253c);
 }
 
 .add-quizz:hover {
     background: #2a1322;
+    text-decoration: inherit;
+    color: rgba(204, 204, 204, 1);
 }
 
 /*Changing the styles of class legend for the slyder*/
+
+.carousel-custom {
+    width: 800px;
+}
 
 .carousel .slide .legend {
   
@@ -53,14 +57,14 @@
 }
 
 .carousel .slide #slider{
-    width: 50%;
+    width: 100%;
 }
 
 .carousel .slide #legend{
     /* bottom: 550px; */
     width: 40%;
     font-family: 'Poiret One', cursive;
-    left: 75%;
+    left: 30%;
     background: rgba(76, 31, 76, .9);
     border-radius: 2px;
    
@@ -117,11 +121,15 @@
  }
 
 
- /* Title on the quiz page */
-/* 
- .quiz-title {
+ /* Topics button on the Quiz page */
+
+ .topics-small {
+    display: block;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    padding-top: 20px;
-    font-size: 3.5rem;
- } */
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+ }
+ 
