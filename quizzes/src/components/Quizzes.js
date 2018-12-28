@@ -9,8 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export const QuizzesContainer = styled.div`
-  height: 100%;
-  margin-top: 90px;
+  position: fixed;
+  width: 980px;
+  top: 0px;
+  bottom: 0;
+  background-color: #fff;
+  left: 50%;
+  margin-left: -28.5%;
 `;
 
 
@@ -44,37 +49,44 @@ const QuizzWrapper = styled.div`
   position: relative;
 `;
 
-const QuizAdded = styled.h2`
-  font-family: 'Poiret One', cursive;
-  font-size: 7rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1.1rem;
+const Heading = styled.h1`
+  margin-top: 100px;
   font-weight: bold;
-  color: #4c1f4c;
+  font-family: 'Roboto', sans-serif;
+  font-size: 5rem;
+  margin-bottom: 40px;
+`;
+
+const SliderWrapper = styled.div`
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
 `;
 
 const Quizzes = props => {
   return (
-    <div>
+    <div className="quizPage-background">
         <QuizzesContainer>
-          <QuizAdded>Recently added <FontAwesomeIcon icon="user-astronaut"/></QuizAdded>
-           <Carousel className="carousel-custom">
-              {props.quizzes.length && props.quizzes.map(quizz => {
-              return (
-                <QuizzWrapper key={quizz.id}>
-                    <img src="https://i.pinimg.com/originals/ea/1d/97/ea1d9797c9bf3dda7a23b238e5e4b364.jpg" id="slider"/>
-                      <div id="legend" className="legend">
-                        <h4>{quizz.title}</h4>
-                        <p className="topic">Topic: {quizz.topic}</p>
-                        <Link  to={`/api/quizzes/single-quiz/${quizz.id}`} className="btn-slider">
-                          Learn more
-                        </Link>
-                      </div>  
-                </QuizzWrapper> 
-              );
-              })}
-            </Carousel>
+          <SliderWrapper>
+            <Heading>Lambda Quizzes</Heading>
+            <Carousel className="carousel-custom">
+                {props.quizzes.length && props.quizzes.map(quizz => {
+                return (
+                  <QuizzWrapper key={quizz.id}>
+                      <img src="https://images.unsplash.com/photo-1467131825866-8e0a12d12448?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80" id="slider"/>
+                        <div id="legend" className="legend">
+                          <h4>{quizz.title}</h4>
+                          <p className="topic">Topic: {quizz.topic}</p>
+                          <Link  to={`/api/quizzes/single-quiz/${quizz.id}`} className="btn-slider">
+                            Learn more
+                          </Link>
+                        </div>  
+                  </QuizzWrapper> 
+                );
+                })}
+              </Carousel>
+          </SliderWrapper>
       </QuizzesContainer>
     </div>
   );

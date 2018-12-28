@@ -73,10 +73,12 @@ const QuizContent = styled.div`
 `;
 
 const QuizTitle = styled.div`
+
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     padding-top: 40px;
-    font-size: 4rem;
+    font-size: 2.5rem;
+    width: 200px;
     color: rgba(204,204,204,1);
 
 `;
@@ -126,11 +128,11 @@ const Globe = styled(FontAwesomeIcon)`
 
 const PentagonWrapper = styled.div`
     position: relative;
-
 `;
 
 const Pentagon = styled.img`
-    width: 550px;
+    display: inline-block;
+    max-width: 550px;
     height: 500px;
     clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%, 0 70%);
     position: absolute;

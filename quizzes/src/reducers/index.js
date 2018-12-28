@@ -130,7 +130,7 @@ import {
         return {
           ...state,
           addingQuiz: false,
-          quizzes: action.payload
+          quizzes: [...state.quizzes, action.payload]
         };
       case ADD_QUIZ_FAILURE:
         return {

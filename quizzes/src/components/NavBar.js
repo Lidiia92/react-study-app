@@ -24,7 +24,7 @@ const Brand = styled.a.attrs({
 
 const NavigationBar = props => {
     return (
-        <Navbar inverse collapseOnSelect>
+        <Navbar id="nav" inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <Brand href="/">LAMBDaQUIZ</Brand>

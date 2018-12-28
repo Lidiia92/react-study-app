@@ -56,7 +56,9 @@ class App extends Component {
           
           <Route 
           path="/api/quizzes/single-quiz/:quizId" 
-          render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token} deleteQuiz={this.props.deleteQuiz}/> } /> 
+          render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token} deleteQuiz={this.props.deleteQuiz}
+        
+          /> } /> 
 
           
           <Route 
@@ -85,7 +87,8 @@ function mapStateToProps(state) {
     quizzes: state.quizzes,
     user: state.user,
     token: state.token,
-    isLogged: state.isLogged
+    isLogged: state.isLogged,
+    deletingQuiz: state.deletingQuiz
 
   };
 }
