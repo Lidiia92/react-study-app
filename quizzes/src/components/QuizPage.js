@@ -4,9 +4,11 @@ import '../App.css';
 import './css/Quizzes.css';
 import styled from 'styled-components';
 import '../pictures/cute-fox-vector.jpg';
+import TopicsStyled from './Quizzes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { Topics } from './Quizzes';
+import EditQuiz from './EditQuiz';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const QuizPageContainer = styled.div`
     background: linear-gradient(#21d2fb, #092645);
@@ -15,6 +17,7 @@ const QuizPageContainer = styled.div`
     margin-right: auto;
     color: #eee;
     padding-bottom: 50px;
+    margin-bottom: 50px;
 `;
 
 const Avatar = styled.img`
@@ -168,6 +171,32 @@ const Heart = styled(FontAwesomeIcon)`
 
 `;
 
+const Buttons = styled(AnchorLink)`
+  border: 2px solid rgba(204, 204, 204, .5);
+  font-family: 'Poiret One', cursive;
+  font-size: 2.2rem;
+  color: rgba(204, 204, 204, 1);
+  text-transform: uppercase;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 2px;
+  filter: drop-shadow(0 0 0.75rem #1c253c);
+
+  &:hover {
+    text-decoration: inherit;
+    color: rgba(204, 204, 204, 1);
+    background: rgba(249, 249, 249, .05);
+  }
+
+  &:focus {
+    text-decoration: inherit;
+    color: inherit;
+  }
+`;
+
 
 ////Component///
 
@@ -211,13 +240,9 @@ class QuizPage extends Component {
                                 <QuizTitle className="quiz-title">{this.state.quiz.title}</QuizTitle>
                                 <p><Marker icon="marker"/><span>{this.state.quiz.topic}</span></p>
                                 <Description>VueJS is implemented as some kind of deployment-ready files. Ramda is a predictable state container for asynchronous HTTP requests. Transmitting information about the subject, maintains a standard defining how to extend JavaScript. BEM is a given context in C. DOM in C.</Description>
-                                <Topics to="#" className="topics-small">Edit <AwesomeIcon icon="edit"/></Topics>
-                                <Topics to="#"
-                                
-                                className="topics-small" 
-                                onClick={() => this.props.deleteQuiz(this.state.quiz.id, this.state.token)}>
-                                    Delete <AwesomeIcon icon="trash-alt"/>
-                                 </Topics>
+                                <Buttons href="#edit-page" className="topics-small">Edit <AwesomeIcon icon="edit"/></Buttons>
+                                <Link to="/" className="topics-small" onClick={() => this.props.deleteQuiz(this.state.quiz.id, this.state.token)}>Delete <AwesomeIcon icon="trash-alt"/></Link>
+                                 
                                 <Votes>{this.state.quiz.votes}<Heart icon="heart"/></Votes>
                             </div>
                             <LeftWrapper>
@@ -234,6 +259,7 @@ class QuizPage extends Component {
                         </QuizContent>
                     </QuizBody>
                 </QuizPageContainer>
+                {this.state.quiz !== '' && <EditQuiz id={this.state.quiz.id} title={this.state.quiz.title} topic={this.state.quiz.topic} token={this.state.token} editQuiz={this.props.editQuiz} quiz={this.state.quiz}/>}
             </div>
         );
     }

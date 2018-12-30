@@ -9,7 +9,7 @@ import QuizPage from './components/QuizPage';
 import Topics from './components/Topics';
 import SignUpForm from './components/SignUp';
 import LogIn from './components/LogIn';
-import { getQuizzes, addUser, fetchUserInfo, deleteQuiz, addQuiz } from './actions';
+import { getQuizzes, addUser, fetchUserInfo, deleteQuiz, addQuiz, editQuiz } from './actions';
 import './App.css';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -57,7 +57,7 @@ class App extends Component {
           <Route 
           path="/api/quizzes/single-quiz/:quizId" 
           render={props => <QuizPage {...props} quizzes={this.props.quizzes} token={this.props.token} deleteQuiz={this.props.deleteQuiz}
-        
+          editQuiz={this.props.editQuiz}
           /> } /> 
 
           
@@ -99,7 +99,8 @@ function mapDispatchToProps(dispatch){
     addUser: newUser => dispatch(addUser(newUser)),
     fetchUserInfo: () => dispatch(fetchUserInfo()),
     deleteQuiz: (quizId, token) => dispatch(deleteQuiz(quizId, token)),
-    addQuiz: (newQuiz, token) => dispatch(addQuiz(newQuiz, token))
+    addQuiz: (newQuiz, token, event) => dispatch(addQuiz(newQuiz, token, event)),
+    editQuiz: (updatedQuiz, quizId, token) => dispatch(editQuiz(updatedQuiz, quizId, token))
   }
 }
 

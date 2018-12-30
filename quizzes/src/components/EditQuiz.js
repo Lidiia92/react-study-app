@@ -32,7 +32,7 @@ const HeaderRelative = styled.div`
 const PurpleHeader = styled.div`
     width: 90%;
     margin: 0 auto;
-    background-image: linear-gradient(to left bottom, #1c253c, #25233c, #2e213a, #351e36, #3c1c31);
+    background-image: linear-gradient(to left bottom, #21d2fb, #1ba2cf, #1a75a1, #154c73, #092645);
     text-align: center;
     position: absolute;
     top: -50px;
@@ -130,7 +130,7 @@ const LinkWrpapper = styled.div`
 //same
 const StyledButton = styled.button`
     font-size: 1.8rem;
-    color: #a93fbd;
+    color: #1ba2cf;
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
@@ -149,30 +149,39 @@ const StyledButton = styled.button`
 ////Component////
 
 
-class AddNewQuiz extends Component {
+class EditQuiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        title: '',
-        topic: ''
+        title: props.title,
+        topic: props.topic
         
     };
   }
+
+
+//   componentWillReceiveProps(){
+//       this.setState({
+//             title: this.props.quiz.title,
+//             topic: this.props.quiz.topic
+//       })
+//   }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
+    console.log('state in editquiz', this.props.quiz);
     return (
-      <div id="add-quiz" className="signup-background">
-        <form onSubmit={(event) => this.props.addQuiz(this.state, this.props.token, event)}>
+      <div id="edit-page" className="signup-background">
+        <form onSubmit={() => this.props.editQuiz(this.state, this.props.id, this.props.token)}>
             <InputsWrapper>
                 <InputsContainer>
                     <HeaderRelative>
                         <PurpleHeader>
                             <IconsContainer>
-                                <p>Add New Quiz</p>
+                                <p>Edit Your Quiz</p>
                             </IconsContainer>
                         </PurpleHeader>
                      </HeaderRelative>
@@ -184,7 +193,7 @@ class AddNewQuiz extends Component {
                                 type="text" 
                                 placeholder="Title..."
                                 onChange={this.handleInputChange}
-                                value={this.state.title}
+                                value={this.state.title || ''}
                                 name="title"
                                 />
                             </InputFieldContent>
@@ -195,13 +204,13 @@ class AddNewQuiz extends Component {
                                 type="text" 
                                 placeholder="Topic..."
                                 onChange={this.handleInputChange}
-                                value={this.state.topic}
+                                value={this.state.topic || ''}
                                 name="topic"
                                 />
                             </InputFieldContent>
                         </BottomWrapper>
                         <LinkWrpapper>
-                            <StyledButton type="submit">SUBMIT</StyledButton>
+                            <StyledButton type="submit">EDIT</StyledButton>
                         </LinkWrpapper>       
                 </InputsContainer>
             </InputsWrapper>
@@ -211,4 +220,4 @@ class AddNewQuiz extends Component {
   }
 }
 
-export default AddNewQuiz;
+export default EditQuiz;

@@ -19,6 +19,9 @@ import {
     ADD_QUIZ_SUCCESS,
     ADD_QUIZ_FAILURE,
 
+    EDIT_QUIZ_START,
+    EDIT_QUIZ_SUCCESS,
+    EDIT_QUIZ_FAILURE,
 
   } from '../actions';
   
@@ -38,6 +41,7 @@ import {
     addingUser: false,
     addingQuiz: false,
     deletingQuiz: false,
+    editingQuiz: false,
     error: null
   };
   
@@ -136,6 +140,24 @@ import {
         return {
           ...state,
           addingQuiz: false,
+          error: action.payload
+        };
+
+        case EDIT_QUIZ_START:
+        return {
+          ...state,
+          editingQuiz: true
+        };
+      case EDIT_QUIZ_SUCCESS:
+        return {
+          ...state,
+          editingQuiz: false,
+          quizzes: [...state.quizzes, action.payload]
+        };
+      case EDIT_QUIZ_FAILURE:
+        return {
+          ...state,
+          editingQuiz: false,
           error: action.payload
         };
      

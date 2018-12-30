@@ -20,6 +20,10 @@ export const ADD_QUIZ_START = 'ADD_QUIZ_START';
 export const ADD_QUIZ_SUCCESS = 'ADD_QUIZ_SUCCESS';
 export const ADD_QUIZ_FAILURE = 'ADD_QUIZ_FAILURE';
 
+export const EDIT_QUIZ_START = 'EDIT_QUIZ_START';
+export const EDIT_QUIZ_SUCCESS = 'EDIT_QUIZ_SUCCESS';
+export const EDIT_QUIZ_FAILURE = 'EDIT_QUIZ_FAILURE';
+
 
 export const getQuizzes = () => dispatch => {
     dispatch({ type: FETCH_QUIZZES_START });
@@ -75,7 +79,8 @@ export const addUser = newUser => dispatch => {
   };
 
 
-  export const addQuiz = (newQuiz, token) => dispatch => {
+  export const addQuiz = (newQuiz, token, event) => dispatch => {
+    event.preventDefault();
     dispatch({ type: ADD_QUIZ_START });
     axios({
       method: 'post',
@@ -94,5 +99,28 @@ export const addUser = newUser => dispatch => {
         });
       })
       .catch(err => dispatch({ type: ADD_QUIZ_FAILURE, payload: err }));
+  };
+
+
+  export const editQuiz = (updatedQuiz, quizId, token) => dispatch => {
+    dispatch({ type: EDIT_QUIZ_START });
+    axios({
+      method: 'patch',
+      url: `https://lambda-study-app.herokuapp.com/api/quizzes/${quizId}/edit`,
+      data: updatedQuiz,
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      }
+
+    })
+      .then(response => {
+        console.log('Updating a Quiz data', response);
+        dispatch({
+          type: EDIT_QUIZ_SUCCESS,
+          payload: {...updatedQuiz, id: response.data}
+        });
+      })
+      .catch(err => dispatch({ type: EDIT_QUIZ_FAILURE, payload: err }));
   };
 
