@@ -5,9 +5,9 @@ ID = "a97e7364-0601-4742-aea7-2c9b71b818ae"
 
 [build]
   # This is the directory to change to before starting a build.
-  base    = "react-study-app/quizzes"
+  base    = "/quizzes"
   # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
   # This is the directory that you are publishing from (relative to root of your repo)
-  publish = "react-study-app/quizzes/build"
+  publish = "/quizzes/build"
   # This will be your default build command
   command = "yarn build"
