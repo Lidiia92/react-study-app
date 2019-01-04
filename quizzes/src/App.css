@@ -73,3 +73,20 @@
   background-position: 50% 40%;
   
 }
+
+/* Sign up button styles */
+
+.submit-btn {
+  font-size: 1.8rem;
+  color: #a93fbd;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  border: none;
+  background: none;
+}
+
+.submit-btn:hover {
+    color: #8017a6;
+    text-decoration: none;
+}

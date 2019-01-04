@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './css/Quizzes.css';
 import styled from 'styled-components';
@@ -28,10 +29,11 @@ const Heading = styled.div`
 
 const SubHeading = styled.h3`
     color: #eee;
+    margin-bottom: 30px;
 `;
 
 const TopicsHeading = styled.h4`
-    margin-top: 50px;
+    margin-top: 30px;
     color: #eee;
     font-size: 2rem;
 `;
@@ -47,58 +49,8 @@ const Topic = styled.div`
 
 `;
 
-const RightDiv = styled.div`
-    width: 40%;
-    background-image: linear-gradient(to bottom right, rgba( 0, 47, 75, .5), rgba( 220, 66, 37, .5)), url("https://images.unsplash.com/photo-1472437774355-71ab6752b434?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80");  
-    background-repeat: no-repeat;
-    background-size: cover;
 
-`;
 
-const LeftDiv = styled.div`
-    width: 60%;
-    background: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin-bottom: 20px;
-        font-size: 3rem;
-        font-family: 'Fredericka the Great', cursive;
-    }
-`;
-
-const TopicsColumn = styled.div`
-    margin-top: 40px;
-    width: 400px;
-    margin: 0 auto;
-`;
-
-const TopicContent = styled.div`
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-`;
-
-const LogoReact = styled.img`
-    width: 220px;
-    height: 150px;
-    border-radius: 50%;
-`;
-
-const LogoJS =styled.img`
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-`;
-
-const LogoVue =styled.img`
-    width: 150px;
-    height: 120px;
-    margin-left: 40px;
-`;
 
 const Topics = props => {
  const topics = [];
@@ -115,6 +67,7 @@ const Topics = props => {
                 <Heading>Topics</Heading>
                 <SubHeading><p>Amazing, free quizzes.</p>
                     Gifted by the world’s most generous community of quiz makers. <FontAwesomeIcon icon="gift"/></SubHeading>
+                    <Link className="transparent-btn topics-small purple-bg" to="/api/quizzes">Quizzes</Link>  
                 <TopicsHeading>Trending quiz topics: </TopicsHeading>   
                 {topics.map(topic => <Topic>{topic}, </Topic>)}
             </Wrapper>

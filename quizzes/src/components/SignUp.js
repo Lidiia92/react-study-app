@@ -259,7 +259,7 @@ class SignUpForm extends Component {
 
                         </BottomWrapper>
                         <LinkWrpapper>
-                            <button type="submit">GET STARTED</button>
+                            <button type="submit" className="submit-btn">GET STARTED</button>
                             <span>OR</span>
                             <StyledLink to="/api/auth/login">LOG IN</StyledLink>
                         </LinkWrpapper>

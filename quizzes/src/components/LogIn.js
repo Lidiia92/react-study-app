@@ -219,7 +219,7 @@ class LoginForm extends Component {
                             </InputFieldContent>
                         </BottomWrapper>
                         <LinkWrpapper>
-                            <button type="submit">LOG IN</button>
+                            <button className="submit-btn" type="submit">LOG IN</button>
                             <StyledLink to="/">HOME</StyledLink>
                         </LinkWrpapper>       
                 </InputsContainer>

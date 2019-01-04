@@ -241,7 +241,7 @@ class QuizPage extends Component {
                                 <p><Marker icon="marker"/><span>{this.state.quiz.topic}</span></p>
                                 <Description>VueJS is implemented as some kind of deployment-ready files. Ramda is a predictable state container for asynchronous HTTP requests. Transmitting information about the subject, maintains a standard defining how to extend JavaScript. BEM is a given context in C. DOM in C.</Description>
                                 <Buttons href="#edit-page" className="topics-small">Edit <AwesomeIcon icon="edit"/></Buttons>
-                                <Link to="/" className="topics-small" onClick={() => this.props.deleteQuiz(this.state.quiz.id, this.state.token)}>Delete <AwesomeIcon icon="trash-alt"/></Link>
+                                <Link to="/" className="transparent-btn topics-small" onClick={() => this.props.deleteQuiz(this.state.quiz.id, this.state.token)}>Delete <AwesomeIcon icon="trash-alt"/></Link>
                                  
                                 <Votes>{this.state.quiz.votes}<Heart icon="heart"/></Votes>
                             </div>
